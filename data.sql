@@ -14,31 +14,3 @@ INSERT INTO animals VALUES (DEFAULT, 'Angemon', '2005-06-12', 1, TRUE, 45);
 INSERT INTO animals VALUES (DEFAULT, 'Boarmon', '2005-06-07', 7, TRUE, 20.4);
 INSERT INTO animals VALUES (DEFAULT, 'Blossom', '1998-10-13', 3, TRUE, 17);
 INSERT INTO animals VALUES (DEFAULT, 'Ditto', '2022-05-15', 4, TRUE, 22);
-
-----------
-
-BEGIN;
-UPDATE animals
-  SET species = 'unspecified';
-ROLLBACK;
-----------
-BEGIN;
-UPDATE animals
-SET species = 'digimon' WHERE name LIKE '%mon';
-UPDATE animals
-SET species = 'pokemon' WHERE species = '';
-COMMIT;
-----------
-BEGIN;
-DELETE FROM animals;
-ROLLBACK;
-----------
-BEGIN;
-DELETE FROM animals WHERE date_of_birth > '2022-01-01';
-SAVEPOINT deldate;
-UPDATE animals
-SET weight_kg = weight_kg * -1;
-ROLLBACK TO deldate;
-UPDATE animals
-SET weight_kg = weight_kg * -1 WHERE weight_kg < 0;
-COMMIT;
