@@ -14,3 +14,45 @@ INSERT INTO animals VALUES (DEFAULT, 'Angemon', '2005-06-12', 1, TRUE, 45);
 INSERT INTO animals VALUES (DEFAULT, 'Boarmon', '2005-06-07', 7, TRUE, 20.4);
 INSERT INTO animals VALUES (DEFAULT, 'Blossom', '1998-10-13', 3, TRUE, 17);
 INSERT INTO animals VALUES (DEFAULT, 'Ditto', '2022-05-15', 4, TRUE, 22);
+
+----------
+
+BEGIN;
+INSERT INTO owners VALUES
+(DEFAULT, 'Sam Smith', 34),
+(DEFAULT, 'Jennifer Orwell', 19),
+(DEFAULT, 'Bob', 45),
+(DEFAULT, 'Melody Pond', 77),
+(DEFAULT, 'Dean Winchester', 14),
+(DEFAULT, 'Jodie Whittaker', 38);
+COMMIT;
+
+BEGIN;
+INSERT INTO species VALUES
+(DEFAULT, 'Pokemon'),
+(DEFAULT, 'Digimon');
+COMMIT;
+
+BEGIN;
+UPDATE animals
+SET species_id = (SELECT id FROM species WHERE name = 'Digimon') WHERE name LIKE '%mon';
+UPDATE animals
+SET species_id = (SELECT id FROM species WHERE name = 'Pokemon') WHERE name NOT LIKE '%mon';
+COMMIT;
+
+BEGIN;
+UPDATE animals
+SET owner_id =
+  CASE name
+    WHEN 'Agumon' THEN (SELECT id FROM owners WHERE full_name = 'Sam Smith')
+    WHEN 'Gabumon' THEN (SELECT id FROM owners WHERE full_name = 'Jennifer Orwell')
+    WHEN 'Pikachu' THEN (SELECT id FROM owners WHERE full_name = 'Jennifer Orwell')
+    WHEN 'Devimon' THEN (SELECT id FROM owners WHERE full_name = 'Bob')
+    WHEN 'Plantmon' THEN (SELECT id FROM owners WHERE full_name = 'Bob')
+    WHEN 'Charmander' THEN (SELECT id FROM owners WHERE full_name = 'Melody Pond')
+    WHEN 'Squirtle' THEN (SELECT id FROM owners WHERE full_name = 'Melody Pond')
+    WHEN 'Blossom' THEN (SELECT id FROM owners WHERE full_name = 'Melody Pond')
+    WHEN 'Angemon' THEN (SELECT id FROM owners WHERE full_name = 'Dean Winchester')
+    WHEN 'Boarmon' THEN (SELECT id FROM owners WHERE full_name = 'Dean Winchester')
+  END;
+COMMIT;
