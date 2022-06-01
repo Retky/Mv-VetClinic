@@ -14,3 +14,15 @@ INSERT INTO animals VALUES (DEFAULT, 'Angemon', '2005-06-12', 1, TRUE, 45);
 INSERT INTO animals VALUES (DEFAULT, 'Boarmon', '2005-06-07', 7, TRUE, 20.4);
 INSERT INTO animals VALUES (DEFAULT, 'Blossom', '1998-10-13', 3, TRUE, 17);
 INSERT INTO animals VALUES (DEFAULT, 'Ditto', '2022-05-15', 4, TRUE, 22);
+
+----------
+
+BEGIN;
+INSERT INTO owners VALUES
+(DEFAULT, 'Sam Smith', 34),
+(DEFAULT, 'Jennifer Orwell', 19),
+(DEFAULT, 'Bob', 45),
+(DEFAULT, 'Melody Pond', 77),
+(DEFAULT, 'Dean Winchester', 14),
+(DEFAULT, 'Jodie Whittaker', 38);
+COMMIT;
