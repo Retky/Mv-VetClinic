@@ -26,3 +26,9 @@ INSERT INTO owners VALUES
 (DEFAULT, 'Dean Winchester', 14),
 (DEFAULT, 'Jodie Whittaker', 38);
 COMMIT;
+
+BEGIN;
+INSERT INTO species VALUES
+(DEFAULT, 'Pokemon'),
+(DEFAULT, 'Digimon');
+COMMIT;
