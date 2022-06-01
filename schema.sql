@@ -25,3 +25,10 @@ CREATE TABLE species (
   name		VARCHAR(100),
   PRIMARY KEY(id)
 );
+
+BEGIN;
+ALTER TABLE animals
+  DROP COLUMN species,
+  ADD species_id INT references species(id),
+  ADD owner_id INT references owners(id);
+COMMIT;
