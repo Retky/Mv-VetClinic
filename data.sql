@@ -32,3 +32,10 @@ INSERT INTO species VALUES
 (DEFAULT, 'Pokemon'),
 (DEFAULT, 'Digimon');
 COMMIT;
+
+BEGIN;
+UPDATE animals
+SET species_id = (SELECT id FROM species WHERE name = 'Digimon') WHERE name LIKE '%mon';
+UPDATE animals
+SET species_id = (SELECT id FROM species WHERE name = 'Pokemon') WHERE name NOT LIKE '%mon';
+COMMIT;
