@@ -56,3 +56,13 @@ SET owner_id =
     WHEN 'Boarmon' THEN (SELECT id FROM owners WHERE full_name = 'Dean Winchester')
   END;
 COMMIT;
+
+-----
+
+BEGIN;
+INSERT INTO vets VALUES
+(DEFAULT, 'William Tatcher', 45, '2000-04-23'),
+(DEFAULT, 'Maisy Smith', 26, '2019-01-17'),
+(DEFAULT, 'Stephanie Mendez', 64, '1980-05-04'),
+(DEFAULT, 'Jack Harkness', 38, '2008-06-08');
+COMMIT;
