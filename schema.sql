@@ -32,3 +32,11 @@ ALTER TABLE animals
   ADD species_id INT references species(id),
   ADD owner_id INT references owners(id);
 COMMIT;
+
+CREATE TABLE vets (
+  id			INT GENERATED ALWAYS AS IDENTITY,
+  name			VARCHAR(100),
+  age			INT,
+  date_of_graduation	DATE,
+  PRIMARY KEY(id)
+);
