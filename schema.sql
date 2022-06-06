@@ -57,3 +57,10 @@ CREATE TABLE visits (
   CONSTRAINT fk_animals FOREIGN KEY(animals_id) REFERENCES animals(id),
   CONSTRAINT fk_vets FOREIGN KEY(vets_id) REFERENCES vets(id)
 );
+
+BEGIN;
+ALTER TABLE visits
+  RENAME COLUMN animals_id TO animal_id;
+ALTER TABLE visits
+  RENAME COLUMN vets_id TO vet_id;
+COMMIT;
