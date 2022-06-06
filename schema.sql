@@ -63,9 +63,11 @@ ALTER TABLE visits
   RENAME COLUMN animals_id TO animal_id;
 ALTER TABLE visits
   RENAME COLUMN vets_id TO vet_id;
+ALTER TABLE visits
+  RENAME COLUMN date TO date_of_visit;
 COMMIT;
 
 begin;
-alter table owners 
+alter table owners
 add column email varchar(120);
 commit;
