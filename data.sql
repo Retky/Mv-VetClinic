@@ -106,10 +106,18 @@ insert into owners (full_name, email) select 'Owner ' || generate_series(1,25000
 COMMIT;
 
 BEGIN;
+-- Indexification for animal on visits table
 create INDEX index_animal_id on visits(
   animal_id
 );
+
+-- Indexification for vet on visits table
 create INDEX index_vet_id on visits(
   vet_id
+);
+
+-- Indexification for email on owners table
+create INDEX index_email on owners(
+  email
 );
 COMMIT;
