@@ -105,6 +105,11 @@ SELECT * FROM (SELECT id FROM animals) animal_ids, (SELECT id FROM vets) vets_id
 insert into owners (full_name, email) select 'Owner ' || generate_series(1,2500000), 'owner_' || generate_series(1,2500000) || '@mail.com';
 COMMIT;
 
+BEGIN;
 create INDEX index_animal_id on visits(
   animal_id
-)
+);
+create INDEX index_vet_id on visits(
+  vet_id
+);
+COMMIT;
