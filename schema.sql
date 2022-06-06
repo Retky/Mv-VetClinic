@@ -64,3 +64,8 @@ ALTER TABLE visits
 ALTER TABLE visits
   RENAME COLUMN vets_id TO vet_id;
 COMMIT;
+
+begin;
+alter table owners 
+add column email varchar(120);
+commit;
